@@ -9,18 +9,12 @@
 
 class CalculateEarnings {
     
-    // initiate the variables/properties
-    private $theTest;
+    // initialize the variables/properties
     private $response;
-    private $totalRatings = 0;
-    private $totalRated = 0;
     private $totalrows = 0;
 
-    //the constructor
-    protected function templateMethod() 
-    {
-        $this->getAverageSalary();
-    }
+    //the constructor    
+    public function __construct() {}
 
     public function getAverageSalary()
     {
@@ -49,12 +43,11 @@ class CalculateEarnings {
 		   $pos1 = stripos($mystring2, $searchstring);
    
 			// Note our use of ===.  Simply == would not work as expected
-			// because the positional issues of is the 0th (first) character per api documentation. 
+			// because the positional issues of the 0th (first) character per api documentation. 
 			if ($pos1 !== false) 
 			{
 			  echo "Found '$searchstring' in '$mystring2' ==> $". $thevals['total_earnings'] . "<br>";
-			  //echo "Found '$searchstring' ==> $" . $thevals['total_earnings']. "<br>";
-			  $totalrows = $totalrows + 1;
+			  $totalrows++;
 			  $sum += $thevals['total_earnings'];
 			} 
 		}	
