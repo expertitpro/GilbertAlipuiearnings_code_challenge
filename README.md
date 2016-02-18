@@ -32,7 +32,7 @@ My solution consists of two primary files.
 2. controller.php
 
 
-The view file is a basic UI to get the search string from the user.  Upon clicking the submit button, controller.php is called.  Tt does basic validation and if the required input is present, instantiates the CalculateEarnings class and calls its getAverageSalary
+The view file is a basic UI to get the search string from the user.  Upon clicking the submit button, controller.php is called.  It does basic validation and if the required input is present, instantiates the CalculateEarnings class and calls its getAverageSalary
 method to provide the average earnings for the search string it it is found.  If it is not found, it emits a error message to that effect and exits.  The user is informed to use the browser's back arrow to perform another search.
 
 If I spent additional time on the project, I would opt for Extjs6 for a nice polished tabbed UI, and a PHP framework like Yii to generate the CRUD saffolding to store search results in a MySQL database.  I would then add a tab with a panel to display some
