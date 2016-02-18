@@ -2,14 +2,17 @@
 <html>
 <head>
 <style>
-.error {color: #FF0000;}
+
+.error {color: #FF0000;}   /* to color the required fields asterisk red */ 
+
+body { background: #E5FFFF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 </style>
 </head>
-<body> 
+<body class="body"> 
 <?php
 
 //include the controller class file
