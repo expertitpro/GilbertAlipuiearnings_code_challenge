@@ -1,4 +1,4 @@
-# earnings_code_challenge
+# Earnings Code Challenge
 
 
 This is Gilbert Alipui's crack at the Teikametrics code challenge.  Thank you for granting me the opportunity to tackle this challenge.  I have enjoyed working on it a great deal.
