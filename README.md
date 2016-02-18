@@ -26,7 +26,7 @@ I did not use a framework since this was a fairly straightforward problem and a 
 
 Solution API
 
-My solution consists of a two primary files.  
+My solution consists of two primary files.  
 
 1. view.php
 2. controller.php
