@@ -30,13 +30,12 @@ class CalculateEarnings {
   		
   		// now, this just loops through the returned object 
 		foreach($this->response as $num => &$values) 
-		{
-		
+		{	
 		   // gets the object properties
 		   $thevals = get_object_vars($values);   	   
 		   
-		   // assign property values variables
-		   $searchstring    = $_POST['name']; 	   
+		   // assign property values to variables
+		   $searchstring = $_POST['name']; 	   
 		   $mystring1 = $thevals['title']; 
 		   $mystring2 = $thevals['title']; 
 
