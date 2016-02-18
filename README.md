@@ -8,7 +8,7 @@ Using the Boston Employee Earnings Report, create a simple web API service which
 Requirements  The average salary should be based on Total Earnings and not Regular. title should allow for case insensitve comparison. 
 title should match on partials (example, teacher should match Teacher, Teacher I, Subsitute Teacher.
 
-Introduction:
+<b>Introduction:</b>
 
 I chose to use PHP5 (without the use of any framework) for this challenge because PHP is great for rapidly getting a prototype up and running.  Also, my most recent back-end work has been with PHP so it was a natural choice for me.
 
@@ -17,14 +17,14 @@ get through, and to avoid the dreaded division by zero!
 
 Naturally, I am open to working with Ruby on Rails, and GO so it would be interesting to compare the level of effort between Ruby and PHP.
 
-My Solution Methodology:
+<b>My Solution Methodology:</b>
 
 My solution is pretty straight forward.  Once I figured out the correct URL for the nice JSON data, I used json_decode to store the data into array.  I then totaled up the earnings based on Total Earnings whilst totalling up the total number of 
 records.  This enabled me to find the average earnings.  I passed 'i' for case-insensitive matching to fulfill the case-insensitivity requirement.  Since it was case-insensitive, I chose not to use strtoupper as that would have been redundant.
 
 I did not use a framework since this was a fairly straightforward problem and a database was not required.
 
-Solution API
+<b>Solution API</b>
 
 My solution consists of two primary files.  
 
