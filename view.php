@@ -15,7 +15,6 @@ body { background: #D1F1FF !important; } /* Adding !important forces the browser
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
    
 </style>
 </head>
@@ -53,7 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
      }
    }
  }
-   
+ 
+// cleans and tests input for correctness   
 function test_input($data) 
 {
    $data = trim($data);
@@ -67,9 +67,8 @@ function test_input($data)
   
 <h1>Gilbert Alipui: Response to Teikametrics' Code Challenge - Salary Search</h1>
 <p><span class="error">* required field.</span></p>
-<!--form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"-->
 <form method="post" action="<?php echo 'http://localhost/earnings_code_challenge/controller.php';?>">
-   Search: <input type="text" name="name" value="<?php echo $name;?>">
+   Search: <input type="text" name="name" value="<?php echo $name;?>" autofocus>
    <span class="error">* <?php echo $nameErr;?></span>
    <br><br>
    
