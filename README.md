@@ -27,7 +27,7 @@ Naturally, I am open to working with Ruby on Rails, and GO so it would be intere
 My solution is pretty straight-forward.  Once I figured out the correct URL for the nice JSON data, I used json_decode to store the data into array.  I then totaled up the earnings based on Total Earnings whilst totalling up the total number of 
 records.  This enabled me to find the average earnings.  Instead of strpos, I used <b>stripos</b> instead for case-insensitive matching to fulfill the case-insensitivity requirement.  Since it was case-insensitive, I chose not to use strtoupper as that would have been redundant.
 
-I did not use a framework since this was a fairly straightforward problem and a database was not required.
+I did not use a framework since this was a fairly straight-forward problem and a database was not required.
 
 <b>Solution API</b>
 
