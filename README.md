@@ -5,7 +5,7 @@ This is Gilbert Alipui's crack at the Teikametrics code challenge.  Thank you fo
 
 <b>How to View the Solution</b>
 
-To view my solution, clone off a copy, and store the <b>earnings_code_challenge</b> folder in your web root and enter this link into the browser's address bar:  http://localhost/earnings_code_challenge
+To view my solution, clone off a copy, and after renaming the folder to remove my name, store the resulting <b>earnings_code_challenge</b> folder in your web root and enter this link into the browser's address bar:  http://localhost/earnings_code_challenge
 
 <b>The Problem:</b>  
 

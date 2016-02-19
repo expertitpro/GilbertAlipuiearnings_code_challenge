@@ -65,7 +65,7 @@ function test_input($data)
 //builds up the basic UI 
 ?>
   
-<h1>Gilbert Alipui: Response to Teikametrics Code Challenge - Salary Search</h1>
+<h1>Gilbert Alipui: Response to Teikametrics' Code Challenge - Salary Search</h1>
 <p><span class="error">* required field.</span></p>
 <!--form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"-->
 <form method="post" action="<?php echo 'http://localhost/earnings_code_challenge/controller.php';?>">

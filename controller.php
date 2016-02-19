@@ -68,8 +68,7 @@ class CalculateEarnings {
 	    }else{
 		  // no data found, the program will return to the start page, but inform the user. The message may be visible on a slower system.
 		  echo "Sorry no data found for: " . $searchstring . "<br>";
-		  echo "<br>Program will Return.... or you may Click the <b>BACK</b> arrow to go again.";
-		  
+		  echo "<br>Program will Return.... or you may Click the <b>BACK</b> arrow to go again.";		  
 		  return 0;		  
 	 }	
    }
@@ -77,24 +76,23 @@ class CalculateEarnings {
    // redirects the user to the start page if the search is unsuccessful
    public function redirect($url) 
    {
-		if (!headers_sent())
-		{    
-			header('Location: '.$url);
-			exit;
-			}
-		else
-			{  
-			echo '<script type="text/javascript">';
-			echo 'window.location.href="'.$url.'";';
-			echo '</script>';
-			echo '<noscript>';
-			echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
-			echo '</noscript>'; exit;
-		}
-    }
+	 if (!headers_sent())
+	 {    
+	    header('Location: '.$url);
+		exit;
+	 }else{  
+		echo '<script type="text/javascript">';
+		echo 'window.location.href="'.$url.'";';
+		echo '</script>';
+		echo '<noscript>';
+		echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
+		echo '</noscript>'; exit;
+	 }
+   }
 }
 
-//ensure the required inputs have been received befor proceeding
+
+//ensure the required inputs have been received before proceeding
 if (isset($_POST['name']) && isset($_POST['submit'])) 
 {
   //instantiate the CalculateEarnings controller class
