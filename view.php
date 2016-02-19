@@ -5,11 +5,18 @@
 
 .error {color: #FF0000;}   /* to color the required fields asterisk red */ 
 
-body { background: #E5FFFF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+body { background: #D1F1FF !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+.btn {color: #002EB8 !important;} 
+
+.btn:focus { background-color: #E5FFFF;}
+
+.btn:hover{ background-color: #2AD100 !important;}
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+   
 </style>
 </head>
 <body class="body"> 
@@ -23,7 +30,7 @@ function callController() {
 
 if($_SERVER["REQUEST_METHOD"] == "GET")
 {
-  // do nothing. prevents caling the controller prematurely
+  // do nothing. prevents caling the controller prematurely leading to division by zero!
  }else{
   // ensure the controller is only called on POST
   callController();
@@ -37,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
 {    
    if (empty($_POST["name"])) 
    {
-     $nameErr = "Name is required";
+     $nameErr = "Search string is required";
    } else {
      $name = test_input($_POST["name"]);
      // check if name only contains letters and whitespace
@@ -66,7 +73,7 @@ function test_input($data)
    <span class="error">* <?php echo $nameErr;?></span>
    <br><br>
    
-  <input type="submit" name="submit" value="Submit">
+  <input type="submit" name="submit" value="Submit" class="btn">
 </form>
 
 <?php

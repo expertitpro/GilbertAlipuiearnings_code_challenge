@@ -11,6 +11,7 @@ class CalculateEarnings {
     
     // initialize the variables/properties
     private $response;
+    private $url = "http://localhost/earnings_code_challenge/view.php";
     private $totalrows = 0;
 
     //the constructor    
@@ -63,12 +64,34 @@ class CalculateEarnings {
 		  echo "The Average salary for the " . $searchstring . " position based on Total Earnings is Grand Total Salary: ". money_format('%i', $sum) . " divided by total number of records " . $totalrows . " = " . money_format('%i', $average) . "<br>";
 	  
 		  echo "<br> Click the <b>BACK</b> arrow to go again.";
+		  return 1;
 	    }else{
-		  // no data found, inform the user
+		  // no data found, the program will return to the start page, but inform the user. The message may be visible on a slower system.
 		  echo "Sorry no data found for: " . $searchstring . "<br>";
-		  echo "<br> Click the <b>BACK</b> arrow to go again.";
+		  echo "<br>Program will Return.... or you may Click the <b>BACK</b> arrow to go again.";
+		  
+		  return 0;		  
 	 }	
    }
+   
+   // redirects the user to the start page if the search is unsuccessful
+   public function redirect($url) 
+   {
+		if (!headers_sent())
+		{    
+			header('Location: '.$url);
+			exit;
+			}
+		else
+			{  
+			echo '<script type="text/javascript">';
+			echo 'window.location.href="'.$url.'";';
+			echo '</script>';
+			echo '<noscript>';
+			echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
+			echo '</noscript>'; exit;
+		}
+    }
 }
 
 //ensure the required inputs have been received befor proceeding
@@ -77,7 +100,10 @@ if (isset($_POST['name']) && isset($_POST['submit']))
   //instantiate the CalculateEarnings controller class
   $workhorse=new CalculateEarnings();
   //then call the method
-  $workhorse->getAverageSalary();
+  $ret = $workhorse->getAverageSalary();
+  if($ret === 0){
+    $workhorse->redirect("http://localhost/earnings_code_challenge");
+  }
 
 }
 
