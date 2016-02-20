@@ -1,14 +1,15 @@
 <?php
+//this file is call-ajax-controller.php.  It is called by view.php
 
  // prints currency in the international format for the en_US locale
  setlocale(LC_MONETARY, 'en_US');
  
+//after echoing back from here
+//try calling the model and try to get the model to echo back information
 
-// this class consumes the boston city salary web service and calculates the average earnings from the 'total_earnings' field
-// this class has a method that calculated the average and echoes back the test message $this->getAverageSalary();
 
-class CalculateEarnings {
-    
+class ControllerClass {
+
     // initialize the variables/properties
     private $response;
     private $url = "http://localhost/earnings_code_challenge/view.php";
@@ -19,12 +20,22 @@ class CalculateEarnings {
 
     public function getAverageSalary()
     {
-        // I could have used javascript to validate on the client side, but I wanted to keep it simple and work on the core requirements
-		if (empty($_POST['name'])) {
-			echo 'Please enter a search string';
-			return false;
-		}
-		
+        // I am using javascript to validate on the client side, but I am validating on the server side too just in case		   
+	    if (empty($_GET["name"])) 
+	    {
+		  echo "Search string is required";
+		  return false;
+	    }else{
+	      $name = test_input($_GET["name"]);
+	      if (preg_match("/^[a-zA-Z ]*$/",$name)) {
+		      echo "The search string is O.K. Look here for the results <br>";
+		      //exit;
+		  }else{
+		    echo "Only letters and white space allowed";
+		    exit;
+		  }
+	    }
+		 
 		// again, I could have used curl to get the JSON data, but just keeping it simple
         $this->response = file_get_contents('https://data.cityofboston.gov/resource/4swk-wcg8.json');
   		$this->response = json_decode($this->response);
@@ -36,7 +47,7 @@ class CalculateEarnings {
 		   $thevals = get_object_vars($values);   	   
 		   
 		   // assign property values to variables
-		   $searchstring = $_POST['name']; 	   
+		   $searchstring = $_GET['name']; 	   
 		   $mystring1 = $thevals['title']; 
 		   $mystring2 = $thevals['title']; 
 
@@ -58,52 +69,39 @@ class CalculateEarnings {
 		  $average = $sum / $totalrows;
 
 		  // report back earnings information as required
-		  echo "<br>The Grand Total Salary for the " . $searchstring . " positions is : " . money_format('%i', $sum) . "<br>";
+		  echo "<br>The Grand Total Salary for the " . $searchstring . " positions-> is : " . money_format('%i', $sum) . "<br>";
 		  echo "The total rows is : " . $totalrows . "<br>";
 
-		  echo "The Average salary for the " . $searchstring . " position based on Total Earnings is Grand Total Salary: ". money_format('%i', $sum) . " divided by total number of records " . $totalrows . " = " . money_format('%i', $average) . "<br>";
-	  
-		  echo "<br> Click the <b>BACK</b> arrow to go again.";
+		  echo "The Average salary for the " . $searchstring . " position based on Total Earnings is Grand Total Salary: ". money_format('%i', $sum) . " divided by total number of records " . $totalrows . " = " . money_format('%i', $average) . "<br>";	  
 		  return 1;
 	    }else{
 		  // no data found, the program will return to the start page, but inform the user. The message may be visible on a slower system.
-		  echo "Sorry no data found for: " . $searchstring . "<br>";
-		  echo "<br>Program will Return.... or you may Click the <b>BACK</b> arrow to go again.";		  
+		  echo "Sorry no data found for: " . $searchstring . "<br>";		  
 		  return 0;		  
 	 }	
    }
-   
-   // redirects the user to the start page if the search is unsuccessful
-   public function redirect($url) 
-   {
-	 if (!headers_sent())
-	 {    
-	    header('Location: '.$url);
-		exit;
-	 }else{  
-		echo '<script type="text/javascript">';
-		echo 'window.location.href="'.$url.'";';
-		echo '</script>';
-		echo '<noscript>';
-		echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
-		echo '</noscript>'; exit;
-	 }
-   }
+
+} //end of controller
+
+// cleans and tests input for correctness   
+function test_input($data) 
+{
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
 }
 
-
 //ensure the required inputs have been received before proceeding
-if (isset($_POST['name']) && isset($_POST['submit'])) 
+if (isset($_GET['name'])) 
 {
   //instantiate the CalculateEarnings controller class
-  $workhorse=new CalculateEarnings();
+  $workhorse=new ControllerClass();
   //then call the method
   $ret = $workhorse->getAverageSalary();
   if($ret === 0){
-    $workhorse->redirect("http://localhost/earnings_code_challenge");
+    //$workhorse->redirect("http://localhost/earnings_code_challenge");
   }
 
 }
-
-
 ?>

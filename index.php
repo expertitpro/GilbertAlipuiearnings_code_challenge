@@ -1,6 +1,6 @@
 <?php
 
-header('Location:view.php');
+header('Location:view/view.php');
 
 
 ?>

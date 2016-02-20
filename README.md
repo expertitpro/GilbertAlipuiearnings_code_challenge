@@ -17,8 +17,10 @@ title should match on partials (example, teacher should match Teacher, Teacher I
 
 I chose to use PHP5 (without the use of any framework) for this challenge because PHP is great for rapidly getting a prototype up and running.  Also, my most recent back-end work has been with PHP so it was a natural choice for me.
 
-I tried not to go overboard on any aspect.  I applied a little bootstrap css for some aesthetics, to round out the corners of the submit button and highlight the textfield as a required field, and did basic validation tests on the server-side, to block processing if for some reason the 
-start page loads with POST containing unacceptable parameters, and to ensure no empty submissions get through, and to avoid the dreaded division by zero!
+I tried not to go overboard on any aspect.  I applied a little bootstrap css for some aesthetics, to round out the corners of the submit button and highlight the textfield as a required field, did basic Javascript validation to catch an empty textfield, and 
+additional tests on the server-side, to block processing if for some reason Javascript is disabled and to ensure no unacceptable parameters or empty submissions get through, to avoid the dreaded division by zero!
+
+Once the client-side validation is completed successfully, and Ajax call is made to the controller to perform the position salary search.
 
 Naturally, I am open to working with Ruby on Rails, and GO so it would be interesting to compare the level of effort between Ruby and PHP.
 
