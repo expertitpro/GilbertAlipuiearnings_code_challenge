@@ -13,13 +13,15 @@ class ControllerClass {
     // initialize the variables/properties
     private $response;
     private $url = "http://localhost/earnings_code_challenge/view.php";
-    private $totalrows = 0;
 
     //the constructor    
     public function __construct() {}
 
     public function getAverageSalary()
     {
+		 $totalrows = 0;
+		 $sum = 0;
+		 
         // I am using javascript to validate on the client side, but I am validating on the server side too just in case		   
 	    if (empty($_GET["name"])) 
 	    {
@@ -69,10 +71,10 @@ class ControllerClass {
 		  $average = $sum / $totalrows;
 
 		  // report back earnings information as required
-		  echo "<br>The Grand Total Salary for the " . $searchstring . " positions-> is : " . money_format('%i', $sum) . "<br>";
+		  echo "<br>The Grand Total Salary for the " . $searchstring . " positions-> is : $" . $sum . "<br>";
 		  echo "The total rows is : " . $totalrows . "<br>";
 
-		  echo "The Average salary for the " . $searchstring . " position based on Total Earnings is Grand Total Salary: ". money_format('%i', $sum) . " divided by total number of records " . $totalrows . " = " . money_format('%i', $average) . "<br>";	  
+		  echo "The Average salary for the " . $searchstring . " position based on Total Earnings is Grand Total Salary: $". $sum . " divided by total number of records " . $totalrows . " = $" . $average . "<br>";	  
 		  return 1;
 	    }else{
 		  // no data found, the program will return to the start page, but inform the user. The message may be visible on a slower system.
